@@ -1,0 +1,166 @@
+<html>
+<head>
+	<title>Harf, Hece, Kelime Sayacı</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		function harfSayisi(metin) {
+			var alfabe = /^[a-zA-ZÂâÎîİıÇçŞşÜüÖöĞğ]/;
+			var harfSayisi = 0;
+
+			for (var i = 0; i < metin.length; i++)
+				if(metin[i].match(alfabe))
+					harfSayisi++;
+
+			return harfSayisi;
+		}
+
+		function heceSayisi(metin) {
+			var sesliler = 'AaÂâEeIıİiÎîOoÖöUuÜü';
+			var heceSayisi = 0;
+
+			for (var i = 0; i < metin.length; i++)
+				if(sesliler.indexOf(metin[i]) > -1)
+					heceSayisi++;
+
+			return heceSayisi;
+		}
+
+		function kelimeSayisi(metin) {
+			var alfabe = /^[a-zA-ZÂâÎîİıÇçŞşÜüÖöĞğ]/;
+			var kelimeSayisi = 0;
+
+			for (var i = 0; i < metin.length-1; i++) {
+				if (metin[i].match(alfabe) && !metin[i+1].match(alfabe))
+					kelimeSayisi++;
+			};
+
+			// kelime ile mi bitiyor acaba?
+			if (metin[metin.length-1].match(alfabe))
+				kelimeSayisi++;
+
+			return kelimeSayisi;
+		}
+
+		$(document).ready(function()
+		{
+			console.log("doc ready");
+			
+			$(hesapla).click(function(){
+				console.log("doc ready", $('#metin').val());
+				var metin = $('#metin').val();
+				$('span.harfSonuc').html(harfSayisi(metin));
+				$('span.heceSonuc').html(heceSayisi(metin));
+				$('span.kelimeSonuc').html(kelimeSayisi(metin));
+			});
+			
+		});
+
+	</script>
+	<style type="text/css">
+		body {
+			font-family: 'Open Sans', Verdana;
+			background-color: #8ECFDE;
+		}
+		h1{
+			text-align: center;
+			margin: 20px 10px;
+			color: #A34400;
+		}
+		textarea{
+			display: block;
+			width: 100%;
+			min-height: 200px;
+			font-family: 'Open Sans', Verdana;
+		}
+		#hesapla{
+			width: 100%;
+			height: 50px;
+			font-size: 14px;
+		}
+		.netice{
+			display: block;
+		}
+		.formKutusu, .sonucKutusu{
+			background-color: #fff;
+			border: 4px solid #DE9D8E;
+			border-radius: 5px;
+			padding: 30px 15px;
+			margin: 10px;
+		}
+
+		.neticeRakam {
+			color: #BA4E36;
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>jQuery ile Harf, Hece ve Kelime Hesaplama</h1>
+	<div class="formKutusu">
+		<label for="metin">Metni Ekleyiniz</label>
+		<textarea id="metin">
+Korkma, sönmez bu şafaklarda yüzen al sancak;
+Sönmeden yurdumun üstünde tüten en son ocak.
+O benim milletimin yıldızıdır, parlayacak;
+O benimdir, o benim milletimindir ancak.
+
+Çatma, kurban olayım, çehreni ey nazlı hilal!
+Kahraman ırkıma bir gül! Ne bu şiddet, bu celal?
+Sana olmaz dökülen kanlarımız sonra helal...
+Hakkıdır, hakk'a tapan, milletimin istiklal!
+
+Ben ezelden beridir hür yaşadım, hür yaşarım.
+Hangi çılgın bana zincir vuracakmış? Şaşarım!
+Kükremiş sel gibiyim, bendimi çiğner, aşarım.
+Yırtarım dağları, enginlere sığmam, taşarım.
+
+Garbın afakını sarmışsa çelik zırhlı duvar,
+Benim iman dolu göğsüm gibi serhaddim var.
+Ulusun, korkma! Nasıl böyle bir imanı boğar,
+'Medeniyet!' dediğin tek dişi kalmış canavar?
+
+Arkadaş! Yurduma alçakları uğratma, sakın.
+Siper et gövdeni, dursun bu hayasızca akın.
+Doğacaktır sana va'dettigi günler hakk'ın...
+Kim bilir, belki yarın, belki yarından da yakın.
+
+Bastığın yerleri 'toprak!' diyerek geçme, tanı:
+Düşün altında binlerce kefensiz yatanı.
+Sen şehit oğlusun, incitme, yazıktır, atanı:
+Verme, dünyaları alsan da, bu cennet vatanı.
+
+Kim bu cennet vatanın uğruna olmaz ki feda?
+Şuheda fışkıracak toprağı sıksan, şuheda!
+Canı, cananı, bütün varımı alsın da hüda,
+Etmesin tek vatanımdan beni dünyada cüda.
+
+Ruhumun senden, ilahi, şudur ancak emeli:
+Değmesin mabedimin göğsüne namahrem eli.
+Bu ezanlar-ki şahadetleri dinin temeli,
+Ebedi yurdumun üstünde benim inlemeli.
+
+O zaman vecd ile bin secde eder -varsa- taşım,
+Her cerihamdan, ilahi, boşanıp kanlı yaşım,
+Fışkırır ruh-i mücerred gibi yerden na'şım;
+O zaman yükselerek arsa değer belki başım.
+
+Dalgalan sen de şafaklar gibi ey şanlı hilal!
+Olsun artık dökülen kanlarımın hepsi helal.
+Ebediyen sana yok, ırkıma yok izmihlal:
+Hakkıdır, hür yaşamış, bayrağımın hürriyet;
+Hakkıdır, hakk'a tapan, milletimin istiklal!
+
+		</textarea>
+		<button id="hesapla">Hesapla</button>
+	</div>
+	<div class="sonucKutusu">
+		<span class="netice harf">Harf Sayısı: <span class="neticeRakam harfSonuc"></span></span>
+		<span class="netice hece">Hece Sayısı: <span class="neticeRakam heceSonuc"></span></span>
+		<span class="netice kelime">Kelime Sayısı: <span class="neticeRakam kelimeSonuc"></span></span>
+	</div>
+
+</body>
+</html>
