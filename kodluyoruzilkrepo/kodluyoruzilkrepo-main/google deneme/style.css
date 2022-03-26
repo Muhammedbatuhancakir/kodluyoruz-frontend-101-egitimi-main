@@ -1,0 +1,63 @@
+/* google logo class */
+.ortala {
+    margin: 0 auto ;
+    margin-top: 100px;
+    text-align: center;
+}
+/* Google logosunun altındaki kısım için gerekli classlar */
+.container {
+    width: 756px;
+    height: 140px;
+    margin: 0 auto;
+    text-align: center;
+}
+/* arama ve buton yeri için class */
+.search-area {
+    width: 754px;
+    height: 62px;
+    background-color: white;
+    margin-bottom: 3px;
+}
+/* 3 bölüme ayrılmış liste bölümü */
+.content{
+    width: 754px;
+    height: 76px;
+}
+.box1
+{
+    width: 37%;
+    height: 76px;
+    background-color: #ceece6;
+    float: left;
+    font-size: 18px;
+}
+.box2
+{
+    width: 144.7px;
+    height: 76px;
+    background-color: #bdece4;
+    float: left;
+    margin-left: 2px;
+    font-size: 13px;
+}
+.box3
+{
+    width: 326.35px;
+    height: 76px;
+    background-color: #aaebe0;
+    float: left;
+    margin-left: 2px;
+    font-size: 13px;
+}
+.ul {
+    padding: 1px 0 0 10px;
+    list-style-type: none;
+    margin: 0 auto;
+}
+.Footerli{
+margin: 0 auto;
+text-align: center;
+font-size: 10px;
+}
+
+
